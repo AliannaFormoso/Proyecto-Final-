@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario socio de Gimnasio</title>
+</head>
+
+<body>
+  <header>
+    <h1>Programa Samsung Desarrolladoras</h1>
+    <h2>Formulario para socios del Gimnasio "Pura Vida"</h2>
+  </header>
+  <main>
+    <div class="desplegable">
+      <p>Por favor, despliegue la flechita o Details antes de llenar el formulario :)</p>
+      <details>Todos los campos son obligatorios. Posicionese sobre ellos para ver el formato requerido. Solo se habilita el boton "Dar Alta" si se cumplen totalmente las indicaciones. Gracias</details>
+    </div>
+    <fieldset>
+      <legend>Socio</legend>
+      <form [formGroup]="socio" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" placeholder="Escriba el nombre" matTooltip="Debe tener al menos 3 caracteres alfabeticos" formControlName="nombre" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Apellidos</mat-label>
+          <input matInput type="text" placeholder="Escriba los apellidos" matTooltip="Debe tener al menos 3 caracteres alfabeticos" formControlName="apellidos" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>N/Socio</mat-label>
+          <input matInput type="number" placeholder="Asigne Numero de Socio" matTooltip="Debe der solo numeros, valor unico no se puede repetir" formControlName="socio" (blur)="validaNumeroSocio()" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>DNI</mat-label>
+          <input matInput type="text" placeholder="Escriba el DNI" matTooltip="Formato 12345678A (8 numeros y una letra. 9 caracteres exactamente)" formControlName="dni" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Telefono</mat-label>
+          <input matInput type="tel" placeholder="Escriba su numero de telefono" matTooltip="Solo numeros. 9 digitos sin incluir codigo pais" formControlName="telefono" />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+          <mat-label>Sexo</mat-label>
+          <mat-select matNativeControl formControlName="sexo" matTooltip="Elija de la lista">
+            <mat-option value="" disabled selected>Elija una opcion</mat-option>
+            <mat-option value="Hombre">Hombre</mat-option>
+            <mat-option value="Mujer">Mujer</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <div class="buttonsT">
+          <button class="buttons" type="submit" [disabled]="!socio.valid" mat-raised-button color="primary" *ngIf="!modificar">Dar alta</button>
+          <button class="buttons" matTooltip="Guardar Cambios" type="button" (click)="funcionGuardarCambios(formDirective)" [disabled]="!socio.valid" *ngIf="modificar" mat-raised-button color="primary">Guardar Cambios</button>
+          <button class="buttons" type="button" (click)="funcionCancelar(formDirective)" mat-raised-button color="primary" matTooltip="Cancelar" *ngIf="modificar">Cancelar</button>
+        </div>
+      </form>
+    </fieldset>
+    <div id="tabla">
+      <table mat-table #tabla [dataSource]="dataSource" class="mat-elevation-z8">
+        <caption>A continuacion se visualizarian los socios segun sean dados de alta en el Gimnasio</caption>
+        <ng-container matColumnDef="socio">
+          <th mat-header-cell *matHeaderCellDef>N/Socio</th>
+          <td mat-cell *matCellDef="let element">{{element._socio}}</td>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">{{element._nombre}}</td>
+        </ng-container>
+        <ng-container matColumnDef="apellidos">
+          <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+          <td mat-cell *matCellDef="let element">{{element._apellidos}}</td>
+        </ng-container>
+        <ng-container matColumnDef="dni">
+          <th mat-header-cell *matHeaderCellDef>DNI</th>
+          <td mat-cell *matCellDef="let element">{{element._dni}}</td>
+        </ng-container>
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef>Telefono</th>
+          <td mat-cell *matCellDef="let element">{{element._telefono}}</td>
+        </ng-container>
+        <ng-container matColumnDef="sexo">
+          <th mat-header-cell *matHeaderCellDef>Sexo</th>
+          <td mat-cell *matCellDef="let element">{{element._sexo}}</td>
+        </ng-container>
+        <ng-container matColumnDef="borrar">
+          <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+          <td mat-cell id="eliminar" *matCellDef="let element; let i= index" (click)="funcionEliminar(i)" matTooltip="Eliminar datos">Eliminar</td>
+        </ng-container>
+        <ng-container matColumnDef="modificar">
+          <th mat-header-cell *matHeaderCellDef>Editar</th>
+          <td mat-cell id="editar" *matCellDef="let element; let i= index" (click)="funcionEditar(i)" matTooltip="Editar datos">Editar</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+    </div>
+  </main>
+  <footer>Laboratorio Final de Curso</footer>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Roboto&display=swap");
+
+body{
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-family: "Roboto", sans-serif;
+    background-color: thistle;
+    text-align: center;
+    color: rgb(61, 15, 61);
+
+}
+header{
+  display: flex;
+  flex-direction: row;
+  background-color: #bb3385;
+  color: white;
+  padding: 10px;
+  align-items: center;
+  border-radius: 0px 0px 10px 10px;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  justify-content: space-around;
+  box-shadow: 0 0 10px black;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin: 30px 20px;
+  align-items: center;
+  flex-direction: column;
+}
+
+  .mat-form-field {
+  font-size: 14px;
+  width: 50%;
+  font-weight: bold;
+  letter-spacing: 1px;
+  }
+
+.desplegable {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 90px;
+  gap: 5px;
+}
+
+footer {
+  background-color: #bb3385;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  font-size: 12px;
+  border-radius: 8px 8px 0px 0px;
+  margin-top: 70px;
+  padding: 10px;
+  box-shadow: 0 0 10px black;
+}
+
+fieldset {
+  border-radius: 10px;
+  border: 2px solid rgb(53, 8, 53);
+  text-align: center;
+  width: 50%;
+  margin: 20px auto;
+  box-shadow: 0 0 10px black;
+}
+
+legend {
+  background-color: Thistle;
+  padding: 7px;
+  text-decoration: underline;
+  font-size: 25px;
+}
+
+.buttons {
+  color: white;
+  align-items: center;
+  font-weight: bold;
+  margin: 10px;
+  width: 12em;
+  height: 4em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1em;
+  transition: transform .2s;
+}
+
+.buttonsT {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    }
+
+.buttons:hover, #eliminar:hover, #editar:hover {
+  box-shadow: 0 0 10px black;
+  cursor: pointer;
+  transform: scale(1.13);
+  opacity: 80%;
+  font-weight: bold;
+}
+
+caption, details, p {
+text-align: center;
+font-size: 17px;
+padding-top: 10px;
+}
+
+caption {
+border-radius: 8px;
+border: 1px solid rgb(53, 8, 53);
+}
+
+#tabla{
+margin: auto;
+padding-bottom: 80px;
+display: flex;
+justify-content: center;
+
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0px 25px;
+    border: 1px outset #bb3385;
+    text-align: center;
+    color: white;
+    background-color: #bb3385;
+  }
+
+
